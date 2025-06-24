@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Business Asset Management</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),
+        url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+    }
+
+    .app-container {
+      margin: 50px auto;
+      max-width: 1000px;
+      background-color: white;
+      border-radius: 15px;
+      display: flex;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      flex-direction: row;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #f8f9fa;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .logo {
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, #007BFF 0%, #0056b3 100%);
+      border-radius: 50%;
+      color: white;
+      font-size: 28px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .sidebar h2 {
+      font-size: 18px;
+      margin-top: 25px;
+      color: #007BFF;
+      cursor: pointer;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 30px;
+      position: relative;
+    }
+
+    .login-link {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 16px;
+    }
+
+    .login-link a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+    .search-container {
+      margin-top: 50px;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-container input {
+      width: 60%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .search-container button {
+      padding: 10px 12px;
+      margin-left: 10px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 20px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .form-row input {
+      flex: 1 1 45%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    .section {
+      display: none;
+    }
+
+    .submit-button {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .submit-button button {
+      background-color: #007BFF;
+      color: white;
+      font-size: 16px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+      color: white;
+      font-size: 20px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <form action="http://submit" method="POST">
+    <div class="app-container">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="logo">H2S</div>
+        <h2 onclick="showSection('asset')">Asset Details</h2>
+        <h2 onclick="showSection('client')">Client Details</h2>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <div class="login-link">
+          <a href="http://login">Login</a>
+        </div>
+
+        <div class="search-container">
+          <input type="text" placeholder="Search...">
+          <button>≡</button>
+        </div>
+
+        <!-- Asset Section -->
+        <div id="asset-section" class="section">
+          <div class="form-row">
+            <input type="text" name="asset_name" placeholder="Asset Name">
+            <input type="text" name="employee_name" placeholder="Employee Name">
+          </div>
+        </div>
+
+        <!-- Client Section -->
+        <div id="client-section" class="section">
+          <div class="form-row">
+            <input type="text" name="client_name" placeholder="Client Name">
+            <input type="text" name="client_address" placeholder="Client Address">
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="submit-button">
+          <button type="submit">Submit</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="footer">Application</div>
+
+  <script>
+    function showSection(type) {
+      const asset = document.getElementById("asset-section");
+      const client = document.getElementById("client-section");
+
+      if (type === "asset") {
+        asset.style.display = "block";
+        client.style.display = "none";
+      } else {
+        asset.style.display = "none";
+        client.style.display = "block";
+      }
+    }
+
+    // Show asset form by default
+    showSection("asset");
+  </script>
+
+</body>
+</html>
